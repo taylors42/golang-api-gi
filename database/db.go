@@ -9,13 +9,13 @@ import (
 )
 
 var (
-	DB  *gorm.DB
-	err error
+	DB *gorm.DB
 )
 
 func ConnectDb() {
 	dsn := "host=localhost user=root password=root dbname=root port=5432 sslmode=disable TimeZone=Asia/Shanghai"
-	DB, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	var err error
+	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Panic("err on db")
 	}
